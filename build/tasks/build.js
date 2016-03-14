@@ -33,7 +33,7 @@ gulp.task('copy-jspm', function () {
 });
 
 gulp.task('copy-deps', ['copy-jspm'], function () {
-  return gulp.src([paths.js])
+  return gulp.src(["config.js"])
     .pipe(gulp.dest(paths.output));
 });
 
