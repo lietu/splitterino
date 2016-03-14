@@ -27,7 +27,10 @@ class Main {
   }
 
   private init() {
-    crashReporter.start();
+    crashReporter.start({
+      productName: 'Splitterino',
+      companyName: 'Splitterino',
+    });
 
     app.on('window-all-closed', function () {
       if (process.platform != 'darwin')
@@ -45,17 +48,13 @@ class Main {
     this.createWindow();
   }
 
-  private ready() {
-    console.log("Ready");
-  }
-
   private createWindow() {
     this.mainWindow = new BrowserWindow({
       width: settings.width,
       height: settings.height
     });
 
-    this.mainWindow.loadUrl('file://' + root + '/index.html');
+    this.mainWindow.loadURL('file://' + root + '/index.html');
   }
 }
 

@@ -111,7 +111,7 @@ declare module Electron {
 		blurWebView(): void;
 		capturePage(rect: { x: number; y: number; width: number; height: number }, callback: Function): void;
 		print(options: { silent: boolean; printBackground: boolean }): void;
-		loadUrl(url: string): void;
+		loadURL(url: string): void;
 		reload(): void;
 		setMenu(menu: any): void;
 		setProgressBar(progress: number): void;

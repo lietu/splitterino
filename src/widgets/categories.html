@@ -1,0 +1,12 @@
+﻿<template>
+  <section>
+    <h2>Categories</h2>
+
+    <div class="list-group">
+      <a route-href="route: category; params.bind: {name:category.name}"
+         class="list-group-item" repeat.for="category of categories">
+        ${category.name}
+      </a>
+    </div>
+  </section>
+</template>
