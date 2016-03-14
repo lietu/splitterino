@@ -9,7 +9,7 @@ It means you can develop cross-platform desktop applications using modern
 web application technologies.
 
  - HTML5
- - CSS3
+ - SCSS + CSS3
  - TypeScript
 
 The different components used in this skeleton are:
@@ -17,6 +17,7 @@ The different components used in this skeleton are:
  - [Aurelia](http://aurelia.io/) is a modern web application framework
  - [Electron](http://electron.atom.io/) makes cross-platform desktop apps powered with web technologies
  - [TypeScript](http://www.typescriptlang.org/) modern programming language that compiles into plain JavaScript
+ - [SCSS](http://sass-lang.com/) is a modern version of CSS that makes working with CSS much more enjoyable and compiles to plain CSS.
  - [Gulp](http://gulpjs.com/) automates workflows and reduces need for IDE integration and shell scripts
 
 
