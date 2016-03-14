@@ -14,9 +14,7 @@ let settings = {
 };
 
 function findRoot() {
-  let parts = __dirname.split(path.sep);
-  parts.pop();
-  return parts.join(path.sep);
+  return __dirname;
 }
 
 let root = findRoot();

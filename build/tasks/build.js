@@ -2,7 +2,6 @@ var gulp = require('gulp');
 var runSequence = require('run-sequence');
 var changed = require('gulp-changed');
 var plumber = require('gulp-plumber');
-var to5 = require('gulp-babel');
 var ts = require('gulp-typescript');
 var tsProject = ts.createProject('tsconfig.json');
 var sourcemaps = require('gulp-sourcemaps');
@@ -25,6 +24,16 @@ gulp.task('build-system', function () {
 gulp.task('build-html', function () {
   return gulp.src(paths.html)
     .pipe(changed(paths.output, {extension: '.html'}))
+    .pipe(gulp.dest(paths.output));
+});
+
+gulp.task('copy-jspm', function () {
+  return gulp.src(['jspm_packages/**/*'])
+    .pipe(gulp.dest(paths.output + 'jspm_packages'));
+});
+
+gulp.task('copy-deps', ['copy-jspm'], function () {
+  return gulp.src([paths.js])
     .pipe(gulp.dest(paths.output));
 });
 
