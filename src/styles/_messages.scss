@@ -1,0 +1,23 @@
+.messages {
+  position: absolute;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  padding: 0 8px;
+
+  .alert {
+    transition: all 200ms;
+    opacity: 1;
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    width: 100%;
+    margin: 0 auto 8px auto;
+
+    &.removing {
+      opacity: 0;
+      width: 85%;
+      pointer-events: none;
+    }
+  }
+}

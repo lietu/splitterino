@@ -1,0 +1,19 @@
+.split-list {
+  .form-inline {
+    display: flex;
+    flex-flow: row nowrap;
+    .form-group {
+      flex-grow: 1;
+      margin-right: 8px;
+
+      input.form-control {
+        width: 100%;
+      }
+
+      &.time {
+        max-width: 100px;
+      }
+    }
+  }
+
+}

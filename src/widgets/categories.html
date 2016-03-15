@@ -8,5 +8,19 @@
         ${category.name}
       </a>
     </div>
+
+    <div class="add-new">
+      <form class="form-inline ${hasError ? 'has-error' : ''}"
+            submit.delegate="addCategory()">
+        <div class="form-group">
+          <input type="text" class="form-control"
+                 keyup.delegate="clearError($event)"
+                 placeholder="Name" value.bind="categoryName">
+        </div>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-plus"></i> Add category
+        </button>
+      </form>
+    </div>
   </section>
 </template>

@@ -1,0 +1,22 @@
+.add-new {
+  margin-bottom: 16px;
+
+  form.form-inline {
+    display: flex;
+    flex-flow: row nowrap;
+
+    .form-group {
+      flex-grow: 1;
+      margin-bottom: 0;
+      margin-right: 16px;
+
+      .form-control {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.form-group.text {
+  margin: auto 0;
+}

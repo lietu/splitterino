@@ -1,4 +1,4 @@
-import {Category} from './category';
+import {Category, CategoryDefinition} from './category';
 
 export class SplitterinoData {
   categories: Category[];
@@ -10,13 +10,36 @@ export class SplitterinoData {
 
   public load() {
     console.log("Loading categories");
-    this.categories.push(new Category("GeoGuessr"));
-    this.categories.push(new Category("Nuclear Throne"));
-    this.categories.push(new Category("Nuclear Throne - Captain"));
-    this.categories.push(new Category("Binding of Isaac Real Platinum God"));
+    this.addCategory({name: "GeoGuessr", splits: [{name: "Done"}]});
+    this.addCategory({name: "Nuclear Throne", splits: [{name: "Done"}]});
+    this.addCategory({
+      name: "Nuclear Throne - Captain",
+      splits: [{name: "Done"}]
+    });
+    this.addCategory({
+      name: "Binding of Isaac Real Platinum God",
+      splits: [{name: "Done"}]
+    });
   }
 
-  public getCategory(name) {
+  public addCategory(definition: CategoryDefinition) {
+    if (this.getCategory(definition.name) !== undefined) {
+      throw new Error(`Category "${definition.name}" already exists.`);
+    }
+
+    this.categories.push(new Category(definition));
+  }
+
+  public removeCategory(category: Category) {
+    for (let i = 0, count = this.categories.length; i < count; i += 1) {
+      if (this.categories[i] === category) {
+        this.categories.splice(i, 1);
+        return;
+      }
+    }
+  }
+
+  public getCategory(name: String) {
     for (let i = 0, count = this.categories.length; i < count; i += 1) {
       if (this.categories[i].name === name) {
         return this.categories[i]

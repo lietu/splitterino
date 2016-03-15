@@ -1,9 +1,18 @@
 ﻿<template>
-    <require from='./nav-top'></require>
+  <require from='./nav-top'></require>
 
-    <nav-top router.bind="router"></nav-top>
+  <nav-top router.bind="router"></nav-top>
 
-    <div class="page-host">
-        <router-view></router-view>
+  <div class="page-host">
+    <router-view></router-view>
+  </div>
+
+  <div class="messages">
+    <div class="alert alert-${message.type} alert-dismissible" role="alert" repeat.for="message of messages" ref="message.element" click.delegate="message.dismiss()">
+      <button type="button" class="close"
+              aria-label="Close"><span aria-hidden="true">&times;</span>
+      </button>
+      ${message.content}
     </div>
+  </div>
 </template>

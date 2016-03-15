@@ -2,6 +2,47 @@
   <section>
     <h2>${category.name}</h2>
 
+    <ul class="list-group split-list">
+      <li class="list-group-item" repeat.for="split of category.splits">
 
+        <form class="form-inline ${hasError ? 'has-error' : ''}"
+              submit.delegate="category.removeSplit(split)">
+          <div class="form-group text">
+            <span>${split.name}</span>
+          </div>
+          <div class="form-group time">
+            <input type="text" class="form-control"
+                   keyup.delegate="clearError($event)"
+                   placeholder="Name" value.bind="split.wr">
+          </div>
+          <div class="form-group time">
+            <input type="text" class="form-control"
+                   keyup.delegate="clearError($event)"
+                   placeholder="Name" value.bind="split.pb">
+          </div>
+          <button type="submit" class="btn btn-danger">
+            <i class="fa fa-minus"></i>
+          </button>
+        </form>
+      </li>
+    </ul>
+
+    <div class="add-new">
+      <form class="form-inline ${hasError ? 'has-error' : ''}"
+            submit.delegate="addSplit()">
+        <div class="form-group">
+          <input type="text" class="form-control"
+                 keyup.delegate="clearError($event)"
+                 placeholder="Name" value.bind="splitName">
+        </div>
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-plus"></i> Add split
+        </button>
+      </form>
+    </div>
+
+    <form class="form-inline" submit.delegate="removeCategory()">
+      <button type="submit" class="btn btn-danger">Delete category</button>
+    </form>
   </section>
 </template>
