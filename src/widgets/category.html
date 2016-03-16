@@ -13,12 +13,7 @@
           <div class="form-group time">
             <input type="text" class="form-control"
                    keyup.delegate="clearError($event)"
-                   placeholder="Name" value.bind="split.wr">
-          </div>
-          <div class="form-group time">
-            <input type="text" class="form-control"
-                   keyup.delegate="clearError($event)"
-                   placeholder="Name" value.bind="split.pb">
+                   placeholder="Name" value.bind="split.targetTime">
           </div>
           <button type="submit" class="btn btn-danger">
             <i class="fa fa-minus"></i>
@@ -41,8 +36,19 @@
       </form>
     </div>
 
-    <form class="form-inline" submit.delegate="removeCategory()">
-      <button type="submit" class="btn btn-danger">Delete category</button>
-    </form>
+    <div class="run-delete">
+      <div class="run">
+        <form class="form-inline" submit.delegate="runCategory()">
+          <button type="submit" class="btn btn-primary">
+            <i class="fa fa-play"></i> Run category
+          </button>
+        </form>
+      </div>
+      <div class="delete">
+        <form class="form-inline" submit.delegate="removeCategory()">
+          <button type="submit" class="btn btn-danger">Delete category</button>
+        </form>
+      </div>
+    </div>
   </section>
 </template>

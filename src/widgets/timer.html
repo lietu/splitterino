@@ -1,0 +1,30 @@
+<template>
+  <section class="timer">
+    <h2>Timer - ${categoryName}</h2>
+
+    <div class="buttons">
+      <button class="btn btn-success" click.delegate="start()">
+        <i class="fa fa-play"></i> Start
+      </button>
+      <button class="btn btn-primary" click.delegate="split()">
+        <i class="fa fa-step-forward"></i> Split
+      </button>
+      <button class="btn btn-warning" click.delegate="stop()">
+        <i class="fa fa-stop"></i> Stop
+      </button>
+    </div>
+
+    <ul class="list-group">
+      <li class="list-group-item split split-${split.status}" repeat.for="split of splitTimers">
+        <div class="name">${split.name}</div>
+        <div class="diff-time time">${split.diffTime}</div>
+        <div class="current-time time">${split.currentTime}</div>
+        <div class="target-time time">${split.targetTime}</div>
+      </li>
+
+      <li class="list-group-item timer ${late ? 'late' : ''}">
+        ${currentTime}
+      </li>
+    </ul>
+  </section>
+</template>

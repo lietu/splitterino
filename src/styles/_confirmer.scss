@@ -1,0 +1,17 @@
+.modal.confirmer {
+  display: block;
+  opacity: 1;
+  cursor: default;
+  transition: all 0.3s;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  &.hidden {
+    display: block !important;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .modal-dialog {
+    margin-top: 128px;
+  }
+}

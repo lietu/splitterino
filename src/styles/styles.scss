@@ -1,9 +1,12 @@
 $border-color: #e7e7e7;
 $background-color: #fff;
+$timer-fonts: Menlo, Monaco, Consolas, "Courier New", monospace;
 
 @import "./base";
 @import "./nav";
 @import "./splash";
 @import "./forms";
 @import "./messages";
+@import "./confirmer";
 @import "./category";
+@import "./timer";

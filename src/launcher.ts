@@ -4,7 +4,6 @@
 import app = require('app');
 import ipc = require('ipc');
 import BrowserWindow = require('browser-window');
-import crashReporter = require('crash-reporter');
 import dialog = require('dialog');
 import path = require("path");
 
@@ -27,11 +26,6 @@ class Main {
   }
 
   private init() {
-    crashReporter.start({
-      productName: 'Splitterino',
-      companyName: 'Splitterino',
-    });
-
     app.on('window-all-closed', function () {
       if (process.platform != 'darwin')
         app.quit();

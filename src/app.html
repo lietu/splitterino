@@ -8,11 +8,34 @@
   </div>
 
   <div class="messages">
-    <div class="alert alert-${message.type} alert-dismissible" role="alert" repeat.for="message of messages" ref="message.element" click.delegate="message.dismiss()">
+    <div class="alert alert-${message.type} alert-dismissible" role="alert"
+         repeat.for="message of messages" ref="message.element"
+         click.delegate="message.dismiss()">
       <button type="button" class="close"
               aria-label="Close"><span aria-hidden="true">&times;</span>
       </button>
       ${message.content}
     </div>
   </div>
+
+  <div class="modal fade ${confirmer.visible ? 'in': 'hidden'} confirmer" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Are you sure?</h4>
+        </div>
+        <div class="modal-body">
+          <p>${confirmer.message}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"
+                  click.delegate="confirmer.onYes()">Yes
+          </button>
+          <button type="button" class="btn btn-default"
+                  click.delegate="confirmer.onNo()">No
+          </button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </template>

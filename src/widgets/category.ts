@@ -1,19 +1,21 @@
 ﻿import {inject} from 'aurelia-framework';
 import {splitterino, Splitterino} from '../services/splitterino';
+import {ICategory} from '../interfaces/category';
 import {Category} from '../models/category';
 import {Split} from "../models/split";
 import {Message} from "../services/messages";
+import {confirmer} from "../services/confirmer";
 import {Router} from 'aurelia-router';
 
 @inject(Router)
 export class Categories {
   heading = 'Categories';
   categories: Category[];
-  category: Category;
+  category: ICategory;
   router: Router;
 
   hasError: boolean;
-  splitName: String;
+  splitName: string;
 
   constructor(router) {
     this.router = router;
@@ -28,19 +30,36 @@ export class Categories {
     this.category = splitterino.data.getCategory(params.name);
 
     if (!this.category) {
-
       return false;
     }
 
     routeConfig.navModel.title = `Category - ${this.category.name}`;
   }
 
-  removeCategory() {
-    splitterino.data.removeCategory(this.category);
-    this.router.navigate("categories");
+  runCategory() {
+    splitterino.setActiveCategory(this.category);
+    this.router.navigate("timer");
   }
 
-  clearError(event) {
+  removeCategory() {
+    let promise = confirmer.ask(`Do you want to delete category "${this.category.name}"?`);
+
+    promise.then(function () {
+        new Message(`Category "${this.category.name}" deleted.`);
+        splitterino.data.removeCategory(this.category);
+        this.router.navigate("categories");
+      }.bind(this),
+      function () {
+        // Do nothing on "no"
+      });
+  }
+
+  clearError(e) {
+    let skip = [13];
+    if (skip.indexOf(e.keyCode) === -1) {
+      this.hasError = false;
+    }
+
     return true;
   }
 
@@ -56,8 +75,8 @@ export class Categories {
     this.hasError = false;
 
     try {
-      this.category.addSplit({name: this.splitName});
-    } catch(e) {
+      this.category.addSplit({name: this.splitName, targetTime: "00:00:00.000"});
+    } catch (e) {
       new Message(e.message, "danger");
       this.hasError = true;
       return;
@@ -67,7 +86,7 @@ export class Categories {
 
     this.splitName = "";
 
-    setTimeout(function() {
+    setTimeout(function () {
       document.querySelector(".page-host").scrollTop = 9999999999999999;
     }, 20);
   }

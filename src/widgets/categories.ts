@@ -1,15 +1,15 @@
 ﻿import {inject} from 'aurelia-framework';
 import {splitterino, Splitterino} from '../services/splitterino';
-import {Category} from '../models/category';
+import {ICategory} from '../interfaces/category';
 import {Message} from '../services/messages';
 
 
 @inject(splitterino)
 export class Categories {
   splitterino: Splitterino;
-  categories: Category[];
+  categories: ICategory[];
   hasError: Boolean;
-  categoryName: String;
+  categoryName: string;
 
   constructor(splitterino) {
     this.splitterino = splitterino;
@@ -44,7 +44,7 @@ export class Categories {
     this.hasError = false;
 
     try {
-      splitterino.data.addCategory({name: this.categoryName, splits: [{"name": "Done"}]});
+      splitterino.data.addCategory({name: this.categoryName, splits: [{"name": "Done", targetTime: "00:00:00.000"}]});
     } catch(e) {
       new Message(e.message, "danger");
       this.hasError = true;

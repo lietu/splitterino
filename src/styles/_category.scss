@@ -11,9 +11,23 @@
       }
 
       &.time {
-        max-width: 100px;
+        max-width: 110px;
       }
     }
   }
+}
 
+.run-delete {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .run {
+    flex-grow: 1;
+    text-align: left;
+  }
+
+  .delete {
+    flex-grow: 1;
+    text-align: right;
+  }
 }

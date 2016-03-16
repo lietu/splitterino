@@ -1,0 +1,63 @@
+section.timer {
+  .buttons {
+    margin-bottom: 16px;
+  }
+
+  .split {
+    display: flex;
+
+    &.split-none {
+      background-color: #f6f6f6;
+    }
+
+    &.split-running {
+      background-color: #bada55;
+    }
+
+    &.split-running-late {
+      background-color: #daba55;
+    }
+
+    &.split-done {
+      background-color: darken(#bada55, 20%);
+    }
+
+    &.split-done-late {
+      background-color: darken(#daba55, 20%);
+    }
+
+    .time {
+      font-family: $timer-fonts;
+    }
+
+    .name {
+      flex-grow: 1;
+    }
+
+    .diff-time {
+      width: 100px;
+      margin-right: 16px;
+    }
+
+    .current-time {
+      width: 100px;
+      margin-right: 16px;
+    }
+
+    .target-time {
+      width: 100px;
+    }
+  }
+
+  .timer {
+    font-family: $timer-fonts;
+    background-color: #C2E89F;
+    text-align: right;
+    font-weight: bold;
+    font-size: 2rem;
+
+    &.late {
+      background-color: #E8C29F;
+    }
+  }
+}

@@ -1,15 +1,11 @@
-export interface SplitDefinition {
-  name: String;
-}
+import {ISplit, ISplitDefinition} from "../interfaces/split";
 
 export class Split {
-  name: String;
-  wr: String;
-  pb: String;
+  name: string;
+  targetTime: string;
 
-  constructor(definition: SplitDefinition) {
+  constructor(definition: ISplitDefinition) {
     this.name = definition.name;
-    this.wr = "00:00:00";
-    this.pb = "00:00:00";
+    this.targetTime = definition.targetTime;
   }
 }
